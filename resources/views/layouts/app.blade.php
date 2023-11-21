@@ -20,9 +20,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     AllPHPTricks.com
-                </a>
+                </a> --}}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,11 +43,11 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             @canany(['create-role', 'edit-role', 'delete-role'])
                                 <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Roles</a></li>
@@ -81,7 +81,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-3 mt-4">
             <div class="container">
                 <div class="row justify-content-center mt-3">
                     <div class="col-md-12">
@@ -92,10 +92,10 @@
                             </div>
                         @endif
 
-                        <h3 class="text-center mt-3 mb-3">Simple Laravel 10 User Roles and Permissions - <a href="https://www.allphptricks.com/">AllPHPTricks.com</a></h3>
+                        {{-- <h3 class="text-center mt-3 mb-3">Sistema de almacen de la empresa Juan Aguinaga</a></h3> --}}
                         @yield('content')
                         
-                        <div class="row justify-content-center text-center mt-3">
+                        {{-- <div class="row justify-content-center text-center mt-3">
                             <div class="col-md-12">
                                 <p>Back to Tutorial: 
                                     <a href="https://www.allphptricks.com/simple-laravel-10-user-roles-and-permissions/"><strong>Tutorial Link</strong></a>
@@ -104,7 +104,7 @@
                                     For More Web Development Tutorials Visit: <a href="https://www.allphptricks.com/"><strong>AllPHPTricks.com</strong></a>
                                 </p>
                             </div>
-                        </div>
+                        </div> --}}
 
 
                     </div>
