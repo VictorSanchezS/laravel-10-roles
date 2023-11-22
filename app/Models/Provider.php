@@ -9,9 +9,5 @@ class Provider extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'phone',
-    ];
+    protected $table = 'providers';
 }
