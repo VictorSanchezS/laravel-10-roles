@@ -14,4 +14,9 @@ class Provider extends Model
         'email',
         'phone'
     ];
+    //Agregado despues de realcionar la tabla category y product
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
