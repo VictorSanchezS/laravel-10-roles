@@ -14,15 +14,26 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
+            //Roles
             'create-role',
             'edit-role',
             'delete-role',
+            //Users
             'create-user',
             'edit-user',
             'delete-user',
+            //Products
             'create-product',
             'edit-product',
-            'delete-product'
+            'delete-product',
+            //Catogories
+            'create-category',
+            'edit-category',
+            'delete-category',
+            //Providers
+            'create-provider',
+            'edit-provider',
+            'delete-provider'
          ];
  
           // Looping and Inserting Array's Permissions into Permission Table

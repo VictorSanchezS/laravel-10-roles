@@ -29,6 +29,14 @@
                         <a class="btn btn-warning" href="{{ route('products.index') }}">
                             <i class="bi bi-bag"></i> Manage Products</a>
                     @endcanany
+                    @canany(['create-category', 'edit-category', 'delete-category'])
+                        <a class="btn btn-info" href="{{ route('categories.index') }}">
+                            <i class="bi bi-bag"></i> Manage Categories</a>
+                    @endcanany
+                    @canany(['create-provider', 'edit-provider', 'delete-provider'])
+                        <a class="btn btn-dark" href="{{ route('providers.index') }}">
+                            <i class="bi bi-bag"></i> Manage Providers</a>
+                    @endcanany
                     <p>&nbsp;</p>
                 </div>
             </div>

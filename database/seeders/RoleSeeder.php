@@ -18,18 +18,37 @@ class RoleSeeder extends Seeder
         $productManager = Role::create(['name' => 'Product Manager']);
 
         $admin->givePermissionTo([
+            //Users
             'create-user',
             'edit-user',
             'delete-user',
+            //Products
             'create-product',
             'edit-product',
-            'delete-product'
+            'delete-product',
+            //Catogories
+            'create-category',
+            'edit-category',
+            'delete-category',
+            //Providers
+            'create-provider',
+            'edit-provider',
+            'delete-provider'
         ]);
 
         $productManager->givePermissionTo([
+            //Products
             'create-product',
             'edit-product',
-            'delete-product'
+            'delete-product',
+            //Catogories
+            'create-category',
+            'edit-category',
+            'delete-category',
+            //Providers
+            'create-provider',
+            'edit-provider',
+            'delete-provider'
         ]);
     }
 }
