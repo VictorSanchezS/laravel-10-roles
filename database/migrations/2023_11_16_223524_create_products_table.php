@@ -15,12 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->unsignedBigInteger('category_id')->unique()->nullable();
-            $table->unsignedBigInteger('provider_id')->unique()->nullable();
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
-            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('set null');
         });
     }
 
