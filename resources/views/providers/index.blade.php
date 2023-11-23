@@ -14,6 +14,9 @@
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Phone</th>
+                <th scope="col">Country</th>
+                <th scope="col">City</th>
+                <th scope="col">Address</th>
                 <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -24,6 +27,9 @@
                     <td>{{ $provider->name }}</td>
                     <td>{{ $provider->email }}</td>
                     <td>{{ $provider->phone }}</td>
+                    <td>{{ $provider->country }}</td>
+                    <td>{{ $provider->city }}</td>
+                    <td>{{ $provider->address }}</td>
                     <td>
                         <form action="{{ route('providers.destroy', $provider->id) }}" method="post">
                             @csrf
@@ -42,7 +48,7 @@
                     </td>
                 </tr>
                 @empty
-                    <td colspan="4">
+                    <td colspan="8">
                         <span class="text-danger">
                             <strong>No provider Found!</strong>
                         </span>

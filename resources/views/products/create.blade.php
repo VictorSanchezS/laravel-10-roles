@@ -41,6 +41,28 @@
                         </div>
 
                         <div class="mb-3 row">
+                            <label for="price" class="col-md-4 col-form-label text-md-end text-start">Price</label>
+                            <div class="col-md-6">
+                                <input type="number" step="any" class="form-control @error('price') is-invalid @enderror"
+                                    id="price" name="price" value="{{ old('price') }}">
+                                @if ($errors->has('price'))
+                                    <span class="text-danger">{{ $errors->first('price') }}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="stock" class="col-md-4 col-form-label text-md-end text-start">Stock</label>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control @error('stock') is-invalid @enderror"
+                                    id="stock" name="stock" value="{{ old('stock') }}">
+                                @if ($errors->has('stock'))
+                                    <span class="text-danger">{{ $errors->first('stock') }}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
                             <label for="category_id" class="col-sm-4 col-form-label text-md-end text-start">Category:</label>
                             <div class="col-md-6">
                                 <select name="category_id" id="category_id"
@@ -71,6 +93,9 @@
                                 @endif
                             </div>
                         </div>
+
+                        
+                        
 
                         <div class="mb-3 row">
                             <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Product">

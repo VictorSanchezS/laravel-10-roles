@@ -25,6 +25,8 @@ class UpdateProviderRequest extends FormRequest
             'name' => 'required|string|max:250',
             'email' => 'required|string|email:rfc,dns|max:250',
             'phone' => 'required|',
+            'city' => 'required|string',
+            'address' => 'required|string'
         ];
     }
 }

@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
+            $table->string('country');
+            $table->string('city');
+            $table->string('address');
             $table->timestamps();
 
             $table->engine = 'InnoDB';

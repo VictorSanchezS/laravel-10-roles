@@ -13,6 +13,10 @@
                 <th scope="col">S#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Category</th>
+                <th scope="col">Provider</th>
                 <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -22,6 +26,10 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
+                    <td>{{ $product->price }}</td>
+                    <td>{{ $product->stock }}</td>
+                    <td>{{ $product->category->name }}</td>
+                    <td>{{ $product->provider->name }}</td>
                     <td>
                         <form action="{{ route('products.destroy', $product->id) }}" method="post">
                             @csrf
@@ -40,7 +48,7 @@
                     </td>
                 </tr>
                 @empty
-                    <td colspan="4">
+                    <td colspan="8">
                         <span class="text-danger">
                             <strong>No Product Found!</strong>
                         </span>

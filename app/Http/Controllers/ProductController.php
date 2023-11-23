@@ -56,9 +56,11 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->input('name');
         $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->stock = $request->input('stock');
         $product->category_id = $request->input('category_id');
         $product->provider_id = $request->input('provider_id');
-        
+
         $product->save();
 
         return redirect()->route('products.index')
@@ -99,6 +101,8 @@ class ProductController extends Controller
         $product = Product::find($product);
         $product->name = $request->input('name');
         $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->stock = $request->input('stock');
         $product->category_id = $request->input('category_id');
         $product->provider_id = $request->input('provider_id');
         

@@ -45,7 +45,16 @@ class ProviderController extends Controller
      */
     public function store(StoreProviderRequest $request): RedirectResponse
     {
-        Provider::create($request->all());
+        $provider = new Provider();
+        $provider->name = $request->input('name');
+        $provider->email = $request->input('email');
+        $provider->phone = $request->input('phone');
+        $provider->country = $request->input('country');
+        $provider->city = $request->input('city');
+        $provider->address = $request->input('address');
+
+        $provider->save();
+
         return redirect()->route('providers.index')
                 ->withSuccess('New provider is added successfully.');
     }
@@ -75,7 +84,16 @@ class ProviderController extends Controller
      */
     public function update(UpdateProviderRequest $request, Provider $provider): RedirectResponse
     {
-        $provider->update($request->all());
+        $provider = new Provider();
+        $provider->name = $request->input('name');
+        $provider->email = $request->input('email');
+        $provider->phone = $request->input('phone');
+        $provider->country = $request->input('country');
+        $provider->city = $request->input('city');
+        $provider->address = $request->input('address');
+
+        $provider->update();
+
         return redirect()->back()
                 ->withSuccess('Provider is updated successfully.');
     }

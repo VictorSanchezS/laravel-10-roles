@@ -16,6 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->unsignedFloat('price');
+            $table->unsignedInteger('stock');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('provider_id')->nullable();
             $table->timestamps();

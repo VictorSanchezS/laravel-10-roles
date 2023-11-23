@@ -47,6 +47,36 @@
                     </div>
 
                     <div class="mb-3 row">
+                        <label for="country" class="col-md-4 col-form-label text-md-end text-start">Country</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control @error('country') is-invalid @enderror" id="country" name="country" value="{{ old('country') }}">
+                            @if ($errors->has('country'))
+                                <span class="text-danger">{{ $errors->first('country') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="city" class="col-md-4 col-form-label text-md-end text-start">City</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control @error('city') is-invalid @enderror" id="city" name="city" value="{{ old('city') }}">
+                            @if ($errors->has('city'))
+                                <span class="text-danger">{{ $errors->first('city') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="address" class="col-md-4 col-form-label text-md-end text-start">Address</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address') }}">
+                            @if ($errors->has('address'))
+                                <span class="text-danger">{{ $errors->first('address') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add provider">
                     </div>
 
