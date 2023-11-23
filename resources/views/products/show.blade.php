@@ -29,6 +29,20 @@
                             {{ $product->description }}
                         </div>
                     </div>
+
+                    <div class="row">
+                        <label for="category_name" class="col-md-4 col-form-label text-md-end text-start"><strong>Category:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->category->name }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="provider_name" class="col-md-4 col-form-label text-md-end text-start"><strong>Provider:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->provider->name }}
+                        </div>
+                    </div>
         
             </div>
         </div>

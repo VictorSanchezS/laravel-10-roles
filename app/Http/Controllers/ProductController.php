@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
+use App\Models\Provider;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -37,13 +39,16 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        return view('products.create');
+        return view('products.create',[
+            'categories' => Category::all(),
+            'providers' => Provider::all()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)//: RedirectResponse
+    public function store(StoreProductRequest $request): RedirectResponse
     {
         // Product::create($request->all());
         // return redirect()->route('products.index')
@@ -56,7 +61,8 @@ class ProductController extends Controller
         
         $product->save();
 
-        return view('products.message', ['msg' => 'New product is added successfully.']);
+        return redirect()->route('products.index')
+                ->withSuccess('New product is added successfully.');
     }
 
     /**
@@ -75,20 +81,22 @@ class ProductController extends Controller
     public function edit(Product $product): View
     {
         return view('products.edit', [
-            'product' => $product
+            'product' => $product,
+            'categories' => Category::all(),
+            'providers' => Provider::all()
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, $id)//: RedirectResponse
+    public function update(UpdateProductRequest $request, $product)//: RedirectResponse
     {
         // $product->update($request->all());
         // return redirect()->back()
         //         ->withSuccess('Product is updated successfully.');
 
-        $product = Product::find($id);
+        $product = Product::find($product);
         $product->name = $request->input('name');
         $product->description = $request->input('description');
         $product->category_id = $request->input('category_id');
@@ -96,7 +104,8 @@ class ProductController extends Controller
         
         $product->save();
 
-        return view('products.message', ['msg' => 'Product is updated successfully.']);
+        return redirect()->back()
+                ->withSuccess('Product is updated successfully.');
     }
 
     /**

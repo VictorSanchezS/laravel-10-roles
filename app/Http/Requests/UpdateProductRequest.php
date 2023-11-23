@@ -23,7 +23,9 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:250',
-            'description' => 'required|string'
+            'description' => 'required|string',
+            'category_id' =>'nullable',
+            'provider_id' => 'nullable'
         ];
     }
 }

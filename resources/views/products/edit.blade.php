@@ -38,6 +38,36 @@
                             @endif
                         </div>
                     </div>
+
+                    <div class="mb-3 row">
+                        <label for="category_id" class="col-sm-4 col-form-label text-md-end text-start">Category:</label>
+                        <div class="col-md-6">
+                            <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror">
+                                <option value="">Select category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" @if ($category->id == $product->category_id) {{'selected'}} @endif>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('category_id'))
+                                    <span class="text-danger">{{ $errors->first('category_id') }}</span>
+                                @endif
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="provider_id" class="col-sm-4 col-form-label text-md-end text-start">provider:</label>
+                        <div class="col-md-6">
+                            <select name="provider_id" id="provider_id" class="form-select @error('provider_id') is-invalid @enderror">
+                                <option value="">Select Provider</option>
+                                @foreach ($providers as $provider)
+                                    <option value="{{ $provider->id }}" @if ($provider->id == $product->provider_id) {{'selected'}} @endif>{{ $provider->name }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('provider_id'))
+                                    <span class="text-danger">{{ $errors->first('provider_id') }}</span>
+                                @endif
+                        </div>
+                    </div>
                     
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Update">
