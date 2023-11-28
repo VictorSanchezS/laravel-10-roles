@@ -7,6 +7,17 @@
         @can('create-product')
             <a href="{{ route('products.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Product</a>
         @endcan
+
+        <div class="mb-3">
+            <form action="{{ route('products.index') }}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="query" id="searchInput" placeholder="Search by product name" value="{{ $query }}" autocomplete="off">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+        
+
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -28,8 +39,8 @@
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->stock }}</td>
-                    <td>{{ $product->category->name }}</td>
-                    <td>{{ $product->provider->name }}</td>
+                    <td>{{ $product->category->name ?? 'None' }}</td>
+                    <td>{{ $product->provider->name ?? 'None' }}</td>
                     <td>
                         <form action="{{ route('products.destroy', $product->id) }}" method="post">
                             @csrf
@@ -57,8 +68,10 @@
             </tbody>
         </table>
 
-        {{ $products->links() }}
+        {{-- {{ $products->links() }} --}}
 
     </div>
 </div>
+
+
 @endsection

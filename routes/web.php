@@ -34,3 +34,5 @@ Route::resources([
     'categories' => CategoryController::class,
     'providers' => ProviderController::class,
 ]);
+
+Route::get('/products/search', 'ProductController@search')->name('products.search');

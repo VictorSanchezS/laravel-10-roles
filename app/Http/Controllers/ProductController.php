@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Provider;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -17,21 +18,25 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-       $this->middleware('auth');
-       $this->middleware('permission:create-product|edit-product|delete-product', ['only' => ['index','show']]);
-       $this->middleware('permission:create-product', ['only' => ['create','store']]);
-       $this->middleware('permission:edit-product', ['only' => ['edit','update']]);
-       $this->middleware('permission:delete-product', ['only' => ['destroy']]);
+        $this->middleware('auth');
+        $this->middleware('permission:create-product|edit-product|delete-product', ['only' => ['index', 'show']]);
+        $this->middleware('permission:create-product', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit-product', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete-product', ['only' => ['destroy']]);
     }
 
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+
+    public function index(Request $request)
     {
-        return view('products.index', [
-            'products' => Product::latest()->paginate(3)
-        ]);
+
+        $query = $request->input('query');
+
+        $products = empty($query) ? Product::all() : Product::where('name', 'like', "%$query%")->get();
+
+        return view('products.index', compact('products', 'query'));
     }
 
     /**
@@ -39,7 +44,7 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        return view('products.create',[
+        return view('products.create', [
             'categories' => Category::all(),
             'providers' => Provider::all()
         ]);
@@ -64,7 +69,7 @@ class ProductController extends Controller
         $product->save();
 
         return redirect()->route('products.index')
-                ->withSuccess('New product is added successfully.');
+            ->withSuccess('New product is added successfully.');
     }
 
     /**
@@ -92,7 +97,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, $product)//: RedirectResponse
+    public function update(UpdateProductRequest $request, $product) //: RedirectResponse
     {
         // $product->update($request->all());
         // return redirect()->back()
@@ -105,11 +110,11 @@ class ProductController extends Controller
         $product->stock = $request->input('stock');
         $product->category_id = $request->input('category_id');
         $product->provider_id = $request->input('provider_id');
-        
+
         $product->save();
 
         return redirect()->back()
-                ->withSuccess('Product is updated successfully.');
+            ->withSuccess('Product is updated successfully.');
     }
 
     /**
@@ -119,6 +124,6 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.index')
-                ->withSuccess('Product is deleted successfully.');
+            ->withSuccess('Product is deleted successfully.');
     }
 }
