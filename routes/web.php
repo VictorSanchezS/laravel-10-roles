@@ -20,7 +20,12 @@ use App\Http\Controllers\ProviderController;
 */
 
 Route::get('/', function () {
+    if(Route::has('login')){
+        return view('/home');
+    }
     return view('auth.login');
+
+    
 });
 
 Auth::routes();
