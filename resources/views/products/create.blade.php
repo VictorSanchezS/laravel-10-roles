@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Create Product')
 
 @section('content')
     <div class="row justify-content-center">
@@ -106,4 +108,12 @@
             </div>
         </div>
     </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

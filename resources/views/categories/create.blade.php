@@ -1,9 +1,11 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Create Category')
 
 @section('content')
 
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-12">
 
         <div class="card">
             <div class="card-header">
@@ -48,4 +50,4 @@
     </div>    
 </div>
     
-@endsection
+@stop

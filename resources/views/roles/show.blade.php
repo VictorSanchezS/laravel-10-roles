@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'Show '.$role->name)
 
 @section('content')
 <div class="row justify-content-center">
