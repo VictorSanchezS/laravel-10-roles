@@ -2,20 +2,17 @@
 
 @section('title', 'Edit '. $product->name)
 
+@section('content_header')
+    <h2>Edit Product</h2>
+@stop
+
 @section('content')
 
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-12">
 
         <div class="card">
-            <div class="card-header">
-                <div class="float-start">
-                    Edit Product
-                </div>
-                <div class="float-end">
-                    <a href="{{ route('products.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
-                </div>
-            </div>
+            
             <div class="card-body">
                 <form action="{{ route('products.update', $product->id) }}" method="post">
                     @csrf
@@ -92,7 +89,11 @@
                     </div>
                     
                     <div class="mb-3 row">
-                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Update">
+                        <label for="category_id" class="col-sm-4 col-form-label text-md-end text-start"></label>
+                        <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary" value="Update">
+                        <a href="{{ route('products.index') }}" class="btn btn-secondary">&larr; Back</a>
+                    </div>
                     </div>
                     
                 </form>

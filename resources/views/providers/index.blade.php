@@ -2,9 +2,12 @@
 
 @section('title', 'Providers')
 
+@section('content_header')
+    <h2>Providers List</h2>
+@stop
+
 @section('content')
 <div class="card">
-    <div class="card-header">Providers List</div>
     <div class="card-body">
         @can('create-provider')
             <a href="{{ route('providers.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Provider</a>

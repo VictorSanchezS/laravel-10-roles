@@ -2,9 +2,12 @@
 
 @section('title', 'Roles')
 
+@section('content_header')
+    <h2>Manage Roles</h2>
+@stop
+
 @section('content')
 <div class="card">
-    <div class="card-header">Manage Roles</div>
     <div class="card-body">
         @can('create-role')
             <a href="{{ route('roles.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Role</a>

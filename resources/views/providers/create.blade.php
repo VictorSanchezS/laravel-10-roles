@@ -2,18 +2,16 @@
 
 @section('title', 'Create Provider')
 
+@section('content_header')
+    <h2>Add New Provider</h2>
+@stop
+
+
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                <div class="float-start">
-                    Add New Provider
-                </div>
-                <div class="float-end">
-                    <a href="{{ route('providers.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
-                </div>
-            </div>
+            
             <div class="card-body">
                 <form action="{{ route('providers.store') }}" method="post">
                     @csrf
@@ -79,7 +77,11 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add provider">
+                        <label for="address" class="col-md-4 col-form-label text-md-end text-start"></label>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value="Add provider">
+                            <a href="{{ route('providers.index') }}" class="btn btn-secondary">&larr; Back</a>
+                        </div>
                     </div>
 
                 </form>

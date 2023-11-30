@@ -2,9 +2,13 @@
 
 @section('title', 'Produtcs')
 
+@section('content_header')
+    <h2>Product List</h2>
+@stop
+
+
 @section('content')
 <div class="card">
-    <div class="card-header">Product List</div>
     <div class="card-body">
         @can('create-product')
             <a href="{{ route('products.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Product</a>

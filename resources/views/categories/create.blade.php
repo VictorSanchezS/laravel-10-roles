@@ -2,20 +2,17 @@
 
 @section('title', 'Create Category')
 
+@section('content_header')
+    <h2>Create new category</h2>
+@stop
+
 @section('content')
 
 <div class="row justify-content-center">
     <div class="col-md-12">
 
         <div class="card">
-            <div class="card-header">
-                <div class="float-start">
-                    Add New Category
-                </div>
-                <div class="float-end">
-                    <a href="{{ route('categories.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
-                </div>
-            </div>
+            
             <div class="card-body">
                 <form action="{{ route('categories.store') }}" method="post">
                     @csrf
@@ -39,11 +36,15 @@
                             @endif
                         </div>
                     </div>
-                    
+
                     <div class="mb-3 row">
-                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add category">
+                        <label for="description" class="col-md-4 col-form-label text-md-end text-start"></label>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-primary" value="Add category">
+                        <a href="{{ route('categories.index') }}" class="btn btn-secondary ">&larr; Back</a>
+                        </div>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
