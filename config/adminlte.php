@@ -325,35 +325,39 @@ return [
 
         [
             'header' => 'ADMIN',
-            'can'  => 'product manager'
+            'can'  => ['create-user', 'edit-user', 'delete-user'],
         ],
         [
             'text' => 'Users',
             'route'  => 'users.index',
             'icon' => 'fas fa-fw fa-users',
-            'can'  => 'product manager',
+            'can'  => ['create-user', 'edit-user', 'delete-user'],
         ],
         [
             'header' => 'PRODUCT MANAGER',
-            'can'  => '',
+            'can'  => [
+                ['create-product', 'edit-product', 'delete-product'],
+                ['create-category', 'edit-category', 'delete-category'],
+                ['create-provider', 'edit-provider', 'delete-provider']
+            ],
         ],
         [
             'text' => 'Products',
             'route'  => 'products.index',
             'icon' => 'fas fa-fw fa-boxes',
-            'can'  => '',
+            'can'  => ['create-product', 'edit-product', 'delete-product'],
         ],
         [
             'text' => 'Categories',
             'route'  => 'categories.index',
             'icon'        => 'fas fa-fw fa-list',
-            'can'  => '',
+            'can'  => ['create-category', 'edit-category', 'delete-category'],
         ],
         [
             'text'        => 'Providers',
             'route'       => 'providers.index',
             'icon'        => 'fas fa-fw fa-address-book',
-            'can'  => '',
+            'can'  => ['create-provider', 'edit-provider', 'delete-provider'],
         ],
 
     ],
