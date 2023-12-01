@@ -19,12 +19,14 @@ use App\Http\Controllers\ProviderController;
 |
 */
 
-Route::get('/', function () {
-    // if(Route::has('login')){
-    //     return view('/home');
-    // }
-    return view('auth.login');
-});
+// Route::get('/', function () { //si tengo problmeas a futuro crear una controlador para esta ruta
+//     if(Route::has('login')){
+//         return view('/home');
+//     }
+//     return view('auth.login');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
