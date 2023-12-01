@@ -3,7 +3,7 @@
 @section('title', 'Create User')
 
 @section('content_header')
-    <h2>Add New User</h2>
+    <h2 class="text-center">Add User</h2>
 @stop
 
 @section('content')
@@ -102,4 +102,72 @@
             </div>
         </div>
     </div>
-@endsection
+
+    <div class="card">
+        <div class="card-body">
+
+            {{-- With prepend slot --}}
+            <x-adminlte-input name="iUser" label="Name" placeholder="name" label-class="text-lightblue">
+                <x-slot name="prependSlot">
+                    <div class="input-group-text">
+                        <i class="fas fa-user-shield text-lightblue"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input>
+
+            {{-- With prepend slot --}}
+            <x-adminlte-input name="iUser" label="Email" placeholder="email" label-class="text-lightblue" type="email">
+                <x-slot name="prependSlot">
+                    <div class="input-group-text">
+                        <i class="fas fa-at text-lightblue"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input>
+
+            {{-- With prepend slot --}}
+            <x-adminlte-input name="iUser" label="Password" placeholder="password" label-class="text-lightblue"
+                type='password'>
+                <x-slot name="prependSlot">
+                    <div class="input-group-text">
+                        <i class="fas fa-lock text-lightblue"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input>
+
+            {{-- With prepend slot --}}
+            <x-adminlte-input name="iUser" label="Confirm Password" placeholder="confirm password"
+                label-class="text-lightblue" type='password'>
+                <x-slot name="prependSlot">
+                    <div class="input-group-text">
+                        <i class="fas fa-lock text-lightblue"></i>
+                    </div>
+                </x-slot>
+            </x-adminlte-input>
+
+            {{-- Example with multiple selections (for SelectBs) --}}
+            @php
+                $config = [
+                    'title' => 'Select multiple options...',
+                    'liveSearch' => true,
+                    'liveSearchPlaceholder' => 'Search...',
+                    'showTick' => true,
+                    'actionsBox' => true,
+                ];
+            @endphp
+            <x-adminlte-select-bs id="roles" name="roles[]" label="roles" label-class="text-danger" :config="$config"
+                multiple>
+                <x-slot name="prependSlot">
+                    <div class="input-group-text bg-gradient-red">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                </x-slot>
+                <x-adminlte-options :options="['News', 'Sports', 'Science', 'Games']" />
+            </x-adminlte-select-bs>
+
+            <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
+                icon="fas fa-lg fa-save" />
+            <x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" />
+        </div>
+    </div>
+
+@stop

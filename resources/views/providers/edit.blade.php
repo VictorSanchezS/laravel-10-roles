@@ -3,7 +3,7 @@
 @section('title', 'Edit '.$provider->name)
 
 @section('content_header')
-    <h2>Edit Provider</h2>
+    <h2 class="text-center">EDIT PROVIDER</h2>
 @stop
 
 @section('content')
@@ -88,4 +88,69 @@
         </div>
     </div>
 </div>    
-@endsection
+
+<div class="card">
+    <div class="card-body">
+
+        {{-- With prepend slot --}}
+        <x-adminlte-input name="iUser" label="Name" placeholder="name" label-class="text-lightblue">
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-address-book text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
+
+        {{-- With prepend slot --}}
+        <x-adminlte-input name="iUser" label="Email" placeholder="email" label-class="text-lightblue">
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-at text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
+        {{-- With prepend slot --}}
+        <x-adminlte-input name="iUser" label="Phone" placeholder="phone" label-class="text-lightblue">
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-phone text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
+
+        {{-- With prepend slot --}}
+        <x-adminlte-input name="iUser" label="Country" placeholder="country" label-class="text-lightblue">
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-flag text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
+
+        {{-- With prepend slot --}}
+        <x-adminlte-input name="iUser" label="City" placeholder="city" label-class="text-lightblue">
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-city text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
+
+        {{-- With prepend slot --}}
+        <x-adminlte-input name="iUser" label="Address" placeholder="address" label-class="text-lightblue">
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-home text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
+
+        <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
+            icon="fas fa-lg fa-save" />
+        <x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" />
+
+
+    </div>
+</div>
+
+@stop

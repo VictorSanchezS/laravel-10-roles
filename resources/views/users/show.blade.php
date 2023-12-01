@@ -48,4 +48,43 @@
         </div>
     </div>
 </div>    
-@endsection
+
+<div class="card">
+    <div class="card-body">
+
+        {{-- With prepend slot --}}
+        <x-adminlte-input name="iUser" label="Name" placeholder="name" label-class="text-lightblue" >
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-user-shield text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
+
+        {{-- With prepend slot --}}
+        <x-adminlte-input name="iUser" label="Email" placeholder="email" label-class="text-lightblue" type="email" >
+            <x-slot name="prependSlot">
+                <div class="input-group-text">
+                    <i class="fas fa-at text-lightblue"></i>
+                </div>
+            </x-slot>
+        </x-adminlte-input>
+
+
+        {{-- Example with multiple selections (for SelectBs) --}}
+        <div class="mb-3 row">
+            <label for="roles" class="col-md-1 col-form-label text-md-end text-start text-lightblue"><strong>Roles</strong></label>
+            <div class="col-md-8" style="line-height: 35px;">
+                @forelse ($user->getRoleNames() as $role)
+                    <span class="badge bg-success">{{ $role }}</span>
+                @empty
+                @endforelse
+            </div>
+        </div>
+
+        <x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" />
+    </div>
+</div>
+
+
+@stop
