@@ -3,7 +3,7 @@
 @section('title', 'Users')
 
 @section('content_header')
-    <h2 class="text-center">MANAGER USERS</h2>
+    <h2 class="h2 text-center display-5 text-primary fw-light">USER LIST</h2>
 @stop
 
 @section('content')

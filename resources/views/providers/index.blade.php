@@ -3,7 +3,7 @@
 @section('title', 'Providers')
 
 @section('content_header')
-    <h2>Providers List</h2>
+<h2 class="h2 text-center display-5 text-primary fw-light">PROVIDER LIST</h2>
 @stop
 
 @section('content')
