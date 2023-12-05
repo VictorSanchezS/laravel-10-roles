@@ -319,7 +319,7 @@ return [
         [
             'text' => 'Roles',
             'route'  => 'roles.index',
-            'icon' => 'fas fa-fw fa-user-shield',
+            'icon' => 'fas fa-cogs',
             'can'  => 'Super Admin',
         ],
 
@@ -330,7 +330,7 @@ return [
         [
             'text' => 'Users',
             'route'  => 'users.index',
-            'icon' => 'fas fa-fw fa-users',
+            'icon' => 'fas fa-users',
             'can'  => ['create-user', 'edit-user', 'delete-user'],
         ],
         [
@@ -344,19 +344,19 @@ return [
         [
             'text' => 'Products',
             'route'  => 'products.index',
-            'icon' => 'fas fa-fw fa-boxes',
+            'icon' => 'fas fa-shopping-bag',
             'can'  => ['create-product', 'edit-product', 'delete-product'],
         ],
         [
             'text' => 'Categories',
             'route'  => 'categories.index',
-            'icon'        => 'fas fa-fw fa-list',
+            'icon'        => 'fas fa-briefcase',
             'can'  => ['create-category', 'edit-category', 'delete-category'],
         ],
         [
             'text'        => 'Providers',
             'route'       => 'providers.index',
-            'icon'        => 'fas fa-fw fa-address-book',
+            'icon'        => 'fas fa-truck',
             'can'  => ['create-provider', 'edit-provider', 'delete-provider'],
         ],
 

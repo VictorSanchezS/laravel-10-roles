@@ -84,7 +84,7 @@ class ProviderController extends Controller
      */
     public function update(UpdateProviderRequest $request, Provider $provider): RedirectResponse
     {
-        $provider = new Provider();
+        $provider = Provider::find($provider->id);
         $provider->name = $request->input('name');
         $provider->email = $request->input('email');
         $provider->phone = $request->input('phone');

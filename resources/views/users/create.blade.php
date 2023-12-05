@@ -15,48 +15,44 @@
                     <form action="{{ route('users.store') }}" method="post">
                         @csrf
 
-                        <div class="mb-3 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-end text-start">Name</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    id="name" name="name" value="{{ old('name') }}">
-                                @if ($errors->has('name'))
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                                @endif
-                            </div>
-                        </div>
+                        {{-- Name --}}
+                        <x-adminlte-input name="name" label="Name" placeholder="name" label-class="text-lightblue" value="{{ old('name') }}">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-user-shield text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input>
 
-                        <div class="mb-3 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email
-                                Address</label>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    id="email" name="email" value="{{ old('email') }}">
-                                @if ($errors->has('email'))
-                                    <span class="text-danger">{{ $errors->first('email') }}</span>
-                                @endif
-                            </div>
-                        </div>
+                        {{-- Email --}}
+                        <x-adminlte-input name="email" label="Email" placeholder="email" label-class="text-lightblue" value="{{ old('email') }}"
+                            type="email">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-at text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input>
 
-                        <div class="mb-3 row">
-                            <label for="password" class="col-md-4 col-form-label text-md-end text-start">Password</label>
-                            <div class="col-md-6">
-                                <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    id="password" name="password">
-                                @if ($errors->has('password'))
-                                    <span class="text-danger">{{ $errors->first('password') }}</span>
-                                @endif
-                            </div>
-                        </div>
+                        {{-- Password --}}
+                        <x-adminlte-input name="password" label="Password" placeholder="password"
+                            label-class="text-lightblue" type='password'>
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-lock text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input>
 
-                        <div class="mb-3 row">
-                            <label for="password_confirmation"
-                                class="col-md-4 col-form-label text-md-end text-start">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" id="password_confirmation"
-                                    name="password_confirmation">
-                            </div>
-                        </div>
+                        {{-- With prepend slot --}}
+                        <x-adminlte-input name="password_confirmation" label="Confirm Password"
+                            placeholder="confirm password" label-class="text-lightblue" type='password'>
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-lock text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input>
 
                         <div class="mb-3 row">
                             <label for="roles" class="col-md-4 col-form-label text-md-end text-start">Roles</label>
@@ -89,84 +85,12 @@
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label for="roles" class="col-md-4 col-form-label text-md-end text-start"></label>
-                            <div class="col-md-6">
-                                <input type="submit" class="btn btn-primary" value="Add User">
-                                <a href="{{ route('users.index') }}" class="btn btn-secondary">&larr; Back</a>
-                            </div>
-                        </div>
+                        <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success" icon="fas fa-lg fa-save" />
+                        <a href="{{ route('users.index') }}"><x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" /></a>
 
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-body">
-
-            {{-- With prepend slot --}}
-            <x-adminlte-input name="iUser" label="Name" placeholder="name" label-class="text-lightblue">
-                <x-slot name="prependSlot">
-                    <div class="input-group-text">
-                        <i class="fas fa-user-shield text-lightblue"></i>
-                    </div>
-                </x-slot>
-            </x-adminlte-input>
-
-            {{-- With prepend slot --}}
-            <x-adminlte-input name="iUser" label="Email" placeholder="email" label-class="text-lightblue" type="email">
-                <x-slot name="prependSlot">
-                    <div class="input-group-text">
-                        <i class="fas fa-at text-lightblue"></i>
-                    </div>
-                </x-slot>
-            </x-adminlte-input>
-
-            {{-- With prepend slot --}}
-            <x-adminlte-input name="iUser" label="Password" placeholder="password" label-class="text-lightblue"
-                type='password'>
-                <x-slot name="prependSlot">
-                    <div class="input-group-text">
-                        <i class="fas fa-lock text-lightblue"></i>
-                    </div>
-                </x-slot>
-            </x-adminlte-input>
-
-            {{-- With prepend slot --}}
-            <x-adminlte-input name="iUser" label="Confirm Password" placeholder="confirm password"
-                label-class="text-lightblue" type='password'>
-                <x-slot name="prependSlot">
-                    <div class="input-group-text">
-                        <i class="fas fa-lock text-lightblue"></i>
-                    </div>
-                </x-slot>
-            </x-adminlte-input>
-
-            {{-- Example with multiple selections (for SelectBs) --}}
-            @php
-                $config = [
-                    'title' => 'Select multiple options...',
-                    'liveSearch' => true,
-                    'liveSearchPlaceholder' => 'Search...',
-                    'showTick' => true,
-                    'actionsBox' => true,
-                ];
-            @endphp
-            <x-adminlte-select-bs id="roles" name="roles[]" label="roles" label-class="text-danger" :config="$config"
-                multiple>
-                <x-slot name="prependSlot">
-                    <div class="input-group-text bg-gradient-red">
-                        <i class="fas fa-user-shield"></i>
-                    </div>
-                </x-slot>
-                <x-adminlte-options :options="['News', 'Sports', 'Science', 'Games']" />
-            </x-adminlte-select-bs>
-
-            <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
-                icon="fas fa-lg fa-save" />
-            <x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" />
         </div>
     </div>
 

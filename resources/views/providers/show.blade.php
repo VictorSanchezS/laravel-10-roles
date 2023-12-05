@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Show     '.$provider->name)
+@section('title', 'Show ' . $provider->name)
 
 @section('content_header')
     <h2>Provider Information</h2>
@@ -8,106 +8,81 @@
 
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-12">
-        <div class="card">
-            
-            <div class="card-body">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
 
+                    {{-- Name --}}
                     <div class="mb-3 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-end text-start"><strong>Name:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            {{ $provider->name }}
-                        </div>
+                        <x-adminlte-input name="name" label="Name" placeholder="Enter name" fgroup-class="col-md-4"
+                            disabled value="{{ $provider->name }}">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-address-book text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input>
                     </div>
 
+                    {{-- Email --}}
                     <div class="mb-3 row">
-                        <label for="email" class="col-md-4 col-form-label text-md-end text-start"><strong>Email Address:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            {{ $provider->email }}
-                        </div>
+                        <x-adminlte-input name="email" label="Email Address" type="email" placeholder="Enter email"
+                            disabled fgroup-class="col-md-4" value="{{ $provider->email }}">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-at text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input>
                     </div>
 
+                    {{-- Phone --}}
                     <div class="mb-3 row">
-                        <label for="phone" class="col-md-4 col-form-label text-md-end text-start"><strong>Phone:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            {{ $provider->phone }}
-                        </div>
-                    </div> 
+                        <x-adminlte-input name="phone" label="Phone" placeholder="Enter phone" disabled
+                            fgroup-class="col-md-4" value="{{ $provider->phone }}">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-phone text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input>
+                    </div>
 
+                    {{-- Country --}}
                     <div class="mb-3 row">
-                        <label for="phone" class="col-md-4 col-form-label text-md-end text-start"><strong></strong></label>
-                        <div class="col-md-6" >
-                            <a href="{{ route('providers.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                        <x-adminlte-input name="country" label="Country" placeholder="Enter country" disabled
+                            fgroup-class="col-md-4" value="{{ $provider->country }}">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-flag text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input>
+                    </div>
+
+                    {{-- Address --}}
+                    <div class="mb-3 row">
+                        <x-adminlte-input name="address" label="Address" placeholder="Enter address" disabled
+                            fgroup-class="col-md-4" value="{{ $provider->address }}">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-home text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input>
+                    </div>
+
+                    {{-- Buttons --}}
+                    <div class="mb-3 row">
+                        <div class="col-md-6">
+                            <a href="{{ route('providers.index') }}"><x-adminlte-button label="Back" theme="secondary"
+                                    icon="fas fa-arrow-left" /></a>
                         </div>
-                    </div> 
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>    
-
-<div class="card">
-    <div class="card-body">
-        
-        {{-- With prepend slot --}}
-        <x-adminlte-input name="iUser" label="Name" placeholder="name" label-class="text-lightblue" disabled>
-            <x-slot name="prependSlot">
-                <div class="input-group-text">
-                    <i class="fas fa-address-book text-lightblue"></i>
-                </div>
-            </x-slot>
-        </x-adminlte-input>
-
-        {{-- With prepend slot --}}
-        <x-adminlte-input name="iUser" label="Email" placeholder="email" label-class="text-lightblue" disabled>
-            <x-slot name="prependSlot">
-                <div class="input-group-text">
-                    <i class="fas fa-at text-lightblue"></i>
-                </div>
-            </x-slot>
-        </x-adminlte-input>
-        {{-- With prepend slot --}}
-        <x-adminlte-input name="iUser" label="Phone" placeholder="phone" label-class="text-lightblue" disabled>
-            <x-slot name="prependSlot">
-                <div class="input-group-text">
-                    <i class="fas fa-phone text-lightblue"></i>
-                </div>
-            </x-slot>
-        </x-adminlte-input>
-
-        {{-- With prepend slot --}}
-        <x-adminlte-input name="iUser" label="Country" placeholder="country" label-class="text-lightblue" disabled>
-            <x-slot name="prependSlot">
-                <div class="input-group-text">
-                    <i class="fas fa-flag text-lightblue"></i>
-                </div>
-            </x-slot>
-        </x-adminlte-input>
-
-        {{-- With prepend slot --}}
-        <x-adminlte-input name="iUser" label="City" placeholder="city" label-class="text-lightblue" disabled>
-            <x-slot name="prependSlot">
-                <div class="input-group-text">
-                    <i class="fas fa-city text-lightblue"></i>
-                </div>
-            </x-slot>
-        </x-adminlte-input>
-
-        {{-- With prepend slot --}}
-        <x-adminlte-input name="iUser" label="Address" placeholder="address" label-class="text-lightblue" disabled>
-            <x-slot name="prependSlot">
-                <div class="input-group-text">
-                    <i class="fas fa-home text-lightblue"></i>
-                </div>
-            </x-slot>
-        </x-adminlte-input>
-
-        <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
-            icon="fas fa-lg fa-save" />
-        <x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" />
-
-
-    </div>
-</div>
 
 @stop
