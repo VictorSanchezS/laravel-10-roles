@@ -3,13 +3,13 @@
 @section('title', 'Create Rol')
 
 @section('content_header')
-    <h2 class="text-center">ADD NEW ROLE</h2>
+    <h2 class="text-center text-primary">ADD NEW ROLE</h2>
 @stop
 
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-4">
 
             <div class="card">
 
@@ -19,7 +19,7 @@
 
                         {{-- Name --}}
                         <div class="mb-3 row">
-                            <x-adminlte-input name="name" label="Name" placeholder="Enter name" fgroup-class="col-md-6"
+                            <x-adminlte-input name="name" label="Name" placeholder="Enter name" fgroup-class="col-md-12"
                                 value="{{ old('name') }}">
                                 <x-slot name="prependSlot">
                                     <div class="input-group-text">
@@ -31,17 +31,15 @@
 
                         {{-- Permissions --}}
                         <div class="mb-3 row">
-                            <label for="permissions"
-                                class="col-md-2 col-form-label text-md-end text-start">Permissions</label>
-                            <div class="col-md-4">
-                                <select class="form-select @error('permissions') is-invalid @enderror" multiple
-                                    aria-label="Permissions" id="permissions" name="permissions[]" style="height: 210px;">
+                            <label for="permissions" class="col-md-4 col-form-label text-md-end text-start">Permissions</label>
+                            <div class="col-md-6">           
+                                <select class="form-select @error('permissions') is-invalid @enderror" multiple aria-label="Permissions" id="permissions" name="permissions[]" style="height: 210px;">
                                     @forelse ($permissions as $permission)
-                                        <option value="{{ $permission->id }}"
-                                            {{ in_array($permission->id, old('permissions') ?? []) ? 'selected' : '' }}>
+                                        <option value="{{ $permission->id }}" {{ in_array($permission->id, old('permissions') ?? []) ? 'selected' : '' }}>
                                             {{ $permission->name }}
                                         </option>
                                     @empty
+    
                                     @endforelse
                                 </select>
                                 @if ($errors->has('permissions'))

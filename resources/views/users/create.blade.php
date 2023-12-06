@@ -3,7 +3,7 @@
 @section('title', 'Create User')
 
 @section('content_header')
-    <h2 class="text-center">Add User</h2>
+    <h2 class="text-center text-primary">ADD USER</h2>
 @stop
 
 @section('content')
@@ -15,48 +15,65 @@
                     <form action="{{ route('users.store') }}" method="post">
                         @csrf
 
-                        {{-- Name --}}
-                        <x-adminlte-input name="name" label="Name" placeholder="name" label-class="text-lightblue" value="{{ old('name') }}">
-                            <x-slot name="prependSlot">
-                                <div class="input-group-text">
-                                    <i class="fas fa-user-shield text-lightblue"></i>
-                                </div>
-                            </x-slot>
-                        </x-adminlte-input>
+                        <div class="row mb-3">
 
-                        {{-- Email --}}
-                        <x-adminlte-input name="email" label="Email" placeholder="email" label-class="text-lightblue" value="{{ old('email') }}"
-                            type="email">
-                            <x-slot name="prependSlot">
-                                <div class="input-group-text">
-                                    <i class="fas fa-at text-lightblue"></i>
-                                </div>
-                            </x-slot>
-                        </x-adminlte-input>
+                            {{-- Name --}}
+                            <div class="col">
+                                <x-adminlte-input name="name" label="Name" placeholder="name"
+                                    label-class="text-lightblue" value="{{ old('name') }}">
+                                    <x-slot name="prependSlot">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-user-shield text-lightblue"></i>
+                                        </div>
+                                    </x-slot>
+                                </x-adminlte-input>
+                            </div>
 
-                        {{-- Password --}}
-                        <x-adminlte-input name="password" label="Password" placeholder="password"
-                            label-class="text-lightblue" type='password'>
-                            <x-slot name="prependSlot">
-                                <div class="input-group-text">
-                                    <i class="fas fa-lock text-lightblue"></i>
-                                </div>
-                            </x-slot>
-                        </x-adminlte-input>
+                            {{-- Email --}}
+                            <div class="col">
+                                <x-adminlte-input name="email" label="Email" placeholder="email"
+                                    label-class="text-lightblue" value="{{ old('email') }}" type="email">
+                                    <x-slot name="prependSlot">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-at text-lightblue"></i>
+                                        </div>
+                                    </x-slot>
+                                </x-adminlte-input>
+                            </div>
 
-                        {{-- With prepend slot --}}
-                        <x-adminlte-input name="password_confirmation" label="Confirm Password"
-                            placeholder="confirm password" label-class="text-lightblue" type='password'>
-                            <x-slot name="prependSlot">
-                                <div class="input-group-text">
-                                    <i class="fas fa-lock text-lightblue"></i>
-                                </div>
-                            </x-slot>
-                        </x-adminlte-input>
+                        </div>
+
+                        <div class="row mb-3">
+
+                            {{-- Password --}}
+                            <div class="col">
+                                <x-adminlte-input name="password" label="Password" placeholder="password"
+                                    label-class="text-lightblue" type='password'>
+                                    <x-slot name="prependSlot">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-lock text-lightblue"></i>
+                                        </div>
+                                    </x-slot>
+                                </x-adminlte-input>
+                            </div>
+
+                            {{-- With prepend slot --}}
+                            <div class="col">
+                                <x-adminlte-input name="password_confirmation" label="Confirm Password"
+                                    placeholder="confirm password" label-class="text-lightblue" type='password'>
+                                    <x-slot name="prependSlot">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-lock text-lightblue"></i>
+                                        </div>
+                                    </x-slot>
+                                </x-adminlte-input>
+                            </div>
+
+                        </div>
 
                         <div class="mb-3 row">
-                            <label for="roles" class="col-md-4 col-form-label text-md-end text-start">Roles</label>
-                            <div class="col-md-6">
+                            <label for="roles" class="col-md-2 col-form-label text-md-end text-start">Roles</label>
+                            <div class="col-md-2">
                                 <select class="form-select @error('roles') is-invalid @enderror" multiple aria-label="Roles"
                                     id="roles" name="roles[]">
                                     @forelse ($roles as $role)
@@ -85,8 +102,10 @@
                             </div>
                         </div>
 
-                        <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success" icon="fas fa-lg fa-save" />
-                        <a href="{{ route('users.index') }}"><x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" /></a>
+                        <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
+                            icon="fas fa-lg fa-save" />
+                        <a href="{{ route('users.index') }}"><x-adminlte-button label="Back" theme="secondary"
+                                icon="fas fa-arrow-left" /></a>
 
                     </form>
                 </div>

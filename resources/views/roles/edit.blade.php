@@ -3,13 +3,13 @@
 @section('title', 'Edit ' . $role->name)
 
 @section('content_header')
-    <h2 class="text-center">ADD ROLE</h2>
+    <h2 class="text-center text-primary">ADD ROLE</h2>
 @stop
 
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-4">
 
             <div class="card">
 
@@ -20,7 +20,7 @@
 
                         {{-- Name --}}
                         <div class="mb-3 row">
-                            <x-adminlte-input name="name" label="Name" placeholder="Enter name" fgroup-class="col-md-6"
+                            <x-adminlte-input name="name" label="Name" placeholder="Enter name" fgroup-class="col-md-12"
                                 value="{{ $role->name }}">
                                 <x-slot name="prependSlot">
                                     <div class="input-group-text">
@@ -51,13 +51,15 @@
                             </div>
                         </div>
 
-                       {{-- Buttons --}}
-                       <div class="mb-3 row">
-                        <div class="col-md-6">
-                            <a href="{{ route('roles.index') }}"><x-adminlte-button label="Back" theme="secondary"
-                                    icon="fas fa-arrow-left" /></a>
+                        {{-- Buttons --}}
+                        <div class="mb-3 row">
+                            <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
+                                icon="fas fa-lg fa-save" />
+                            <div class="col-md-6">
+                                <a href="{{ route('roles.index') }}"><x-adminlte-button label="Back" theme="secondary"
+                                        icon="fas fa-arrow-left" /></a>
+                            </div>
                         </div>
-                    </div>
 
                     </form>
                 </div>

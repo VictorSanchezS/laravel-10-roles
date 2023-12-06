@@ -10,30 +10,36 @@
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-4">
 
-            <div class="card">
+            <div class="card shadow p-3 mb-5 bg-body rounded">
 
                 <div class="card-body">
 
-                    {{-- With label, invalid feedback disabled and form group class --}}
+                    {{-- Name --}}
                     <div class="row">
-                        <x-adminlte-input name="iLabel" label="Name" placeholder="Name Category" name="name" disabled
-                            label-class="text-success " value="{{ $category->name }}" id="name"
-                            fgroup-class="col-md-6" disable-feedback />
+                        <label for="name"
+                            class="col-md-4 col-form-label text-md-end text-start text-info"><strong>Name</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $category->name }}
+                        </div>
                     </div>
                     
-                    {{-- With prepend slot, sm size and label --}}
+                    {{-- Description --}}
                     <div class="row">
-                        <x-adminlte-input name="iLabel" label="Description" placeholder="{{ $category->description }}" name="description" disabled
-                            label-class="text-warning " value="{{ $category->name }}" id="name"
-                            fgroup-class="col-md-6" disable-feedback />
+                        <label for="name"
+                            class="col-md-4 col-form-label text-md-end text-start text-info"><strong>Description</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $category->description }}
+                        </div>
                     </div>
 
-                    <div class="mb-3 row">
-                            <div class="col-md-6">
-                                <a href="{{ route('categories.index') }}"><x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" /></a>
-                            </div>
+                    <div class="row">
+                        <label for="description"
+                            class="col-md-4 col-form-label text-md-end text-start"><strong></strong></label>
+                        <div class="float-end col-md-6">
+                            <a href="{{ route('categories.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                        </div>
                     </div>
 
                 </div>

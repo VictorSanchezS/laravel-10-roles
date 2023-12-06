@@ -9,7 +9,7 @@
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-6">
 
             <div class="card">
 
@@ -19,19 +19,21 @@
                         @method('PUT')
 
                         {{-- With label, invalid feedback disabled and form group class --}}
-                        <div class="row">
-                            <x-adminlte-input name="iLabel" label="Name" placeholder="Name Category" name="name"
-                                label-class="text-success " value="{{ $category->name }}" id="name"
-                                fgroup-class="col-md-6" disable-feedback />
-
-                        </div>
-                        @if ($errors->has('name'))
-                            <span class="text-danger text-sm mt-1">{{ $errors->first('name') }}</span>
-                        @endif
+                        <x-adminlte-input name="name" label="Name" placeholder="Name" label-class="text-lightblue"
+                            value="{{ $category->name }}">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text">
+                                    <i class="fas fa-briefcase text-lightblue"></i>
+                                </div>
+                            </x-slot>
+                            @if ($errors->has('name'))
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                            @endif
+                        </x-adminlte-input>
 
                         
                         {{-- With prepend slot, sm size and label --}}
-                        <x-adminlte-textarea name="description" label="Description" rows=5 label-class="text-warning"
+                        <x-adminlte-textarea name="description" label="Description" rows=5 label-class="text-warning" fgroup-class="col-md-12"
                             id="description" name="description" igroup-size="sm" placeholder="Insert description...">
                             {{ $category->description }}
                             <x-slot name="prependSlot">

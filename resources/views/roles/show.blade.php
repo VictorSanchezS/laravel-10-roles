@@ -3,35 +3,28 @@
 @section('title', 'Show ' . $role->name)
 
 @section('content_header')
-    <h2 class="text-primary">ROLE INFOMATION</h2>
+    <h2 class="text-primary text-center">ROLE INFOMATION</h2>
 @stop
 
 
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow p-3 mb-5 bg-body rounded">
+            
+            <div class="card-body">
 
-                <div class="card-body">
+                    <div class="row">
+                        <label for="name" class="col-md-4 col-form-label text-md-end text-start"><strong>Name</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $role->name }}
+                        </div>
+                    </div>
 
-                    {{-- Name --}}
                     <div class="mb-3 row">
-                    <x-adminlte-input name="iUser" label="Name" placeholder="name" label-class="text-lightblue" fgroup-class="col-md-3"
-                        value="{{ $role->name }}" disabled>
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text">
-                                <i class="fas fa-user-shield text-lightblue"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input>
-                </div>
-
-                    {{-- Permissions --}}
-                    <div class="mb-3 row">
-                        <label for="roles"
-                            class="col-md-6 col-form-label text-md-end text-start text-lightblue"><strong>Permissions</strong></label>
-                        <div class="col-md-8" style="line-height: 35px;">
-                            @if ($role->name == 'Super Admin')
+                        <label for="roles" class="col-md-4 col-form-label text-md-end text-start"><strong>Permissions</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            @if ($role->name=='Super Admin')
                                 <span class="badge bg-primary">All</span>
                             @else
                                 @forelse ($rolePermissions as $permission)
@@ -41,12 +34,12 @@
                             @endif
                         </div>
                     </div>
-
-                    <a href="{{ route('roles.index') }}"><x-adminlte-button label="Back" theme="secondary"
-                            icon="fas fa-arrow-left" /></a>
-                </div>
+                    <div class="float-end">
+                        <label for="roles" class="col-md-4 col-form-label text-md-end text-start"><strong></strong></label>
+                        <a href="{{ route('roles.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                    </div>
             </div>
         </div>
     </div>
-
-@stop
+</div>    
+@endsection

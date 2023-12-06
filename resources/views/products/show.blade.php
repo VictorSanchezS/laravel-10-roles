@@ -3,84 +3,78 @@
 @section('title', 'Show ', $product->name)
 
 @section('content_header')
-    <h2 class="text-center text-primary">PRODUCTO INFORMATION</h2>
+    <h2 class="text-center text-primary">PRODUCT INFORMATION</h2>
 @stop
+
 
 
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-4">
 
-            <div class="card">
+            <div class="card shadow p-3 mb-5 bg-body rounded">
 
                 <div class="card-body">
 
-                    <div class="mb-3 row">
-                        <div class="col-md-6">
-                            <x-adminlte-input name="name" label="Name" disabled
-                                label-class="text-lightblue" value="{{ $product->name }}">
-                                <x-slot name="prependSlot">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-cart-plus text-lightblue"></i>
-                                    </div>
-                                </x-slot>
-                            </x-adminlte-input>
+                    <div class="row">
+                        <label for="name"
+                            class="col-md-4 col-form-label text-md-end text-start text-info"><strong>Name</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->name }}
                         </div>
                     </div>
-
-                    {{-- With prepend slot, sm size and label --}}
-                    <div class="mb-3 row">
-                        <div class="col-md-8">
-                            <x-adminlte-textarea name="description" label="Description" rows=5 disabled
-                                label-class="text-success" igroup-size="sm" placeholder="Insert description...">
-                                <x-slot name="prependSlot">
-                                    <div class="input-group-text bg-dark">
-                                        <i class="fas fa-lg fa-file-alt text-success"></i>
-                                    </div>
-                                </x-slot>
-                                {{ $product->description }}
-                            </x-adminlte-textarea>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <div class="col-md-6">
-                            <x-adminlte-input name="name" label="Category" disabled
-                                label-class="text-lightblue" value="{{ $product->category->name ?? 'None' }}">
-                                <x-slot name="prependSlot">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-cart-plus text-lightblue"></i>
-                                    </div>
-                                </x-slot>
-                            </x-adminlte-input>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <div class="col-md-6">
-                            <x-adminlte-input name="name" label="Provider" disabled
-                                label-class="text-lightblue" value="{{ $product->provider->name ?? 'None' }}">
-                                <x-slot name="prependSlot">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-cart-plus text-lightblue"></i>
-                                    </div>
-                                </x-slot>
-                            </x-adminlte-input>
-                        </div>
-                    </div>
-
 
                     <div class="row">
-                        <div class="col-md-6">
-                            <a href="{{ route('products.index') }}"><x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" /></a>
+                        <label for="description"
+                            class="col-md-4 col-form-label text-md-end text-start text-info"><strong>Description</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->description }}
                         </div>
                     </div>
 
+                    <div class="row">
+                        <label for="description"
+                            class="col-md-4 col-form-label text-md-end text-start text-info"><strong>Price</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->price }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="description"
+                            class="col-md-4 col-form-label text-md-end text-start text-info"><strong>Stock</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->stock }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="description"
+                            class="col-md-4 col-form-label text-md-end text-start text-info"><strong>Category</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->category->name ?? 'None' }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="description"
+                            class="col-md-4 col-form-label text-md-end text-start text-info"><strong>Provider</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            {{ $product->provider->name ?? 'None' }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="description"
+                            class="col-md-4 col-form-label text-md-end text-start"><strong></strong></label>
+                        <div class="float-end col-md-6">
+                            <a href="{{ route('products.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    
-@stop
+@endsection
