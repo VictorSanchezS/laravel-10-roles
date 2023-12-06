@@ -52,13 +52,13 @@
                         </div>
 
                         {{-- Buttons --}}
-                        <div class="mb-3 row">
+                        <div class="mb-3 row justify-content-end">
+                            <a href="{{ route('roles.index') }}">
+                                <x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left"
+                                    class="rounded-2" class="mr-2" />
+                            </a>
                             <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
-                                icon="fas fa-lg fa-save" />
-                            <div class="col-md-6">
-                                <a href="{{ route('roles.index') }}"><x-adminlte-button label="Back" theme="secondary"
-                                        icon="fas fa-arrow-left" /></a>
-                            </div>
+                                class="rounded-2" icon="fas fa-lg fa-save" />
                         </div>
 
                     </form>

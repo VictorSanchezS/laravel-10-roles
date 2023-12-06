@@ -75,7 +75,7 @@
 
                         <div class="mb-3 row">
                             <label for="roles"
-                                class="col-md-4 col-form-label text-md-end text-start text-lightblue">Roles</label>
+                                class="col-md-4 col-form-label text-md-end text-start text-info">Roles</label>
                             <div class="col-md-6">
                                 <select class="form-select @error('roles') is-invalid @enderror" multiple aria-label="Roles"
                                     id="roles" name="roles[]">
@@ -105,10 +105,15 @@
                             </div>
                         </div>
 
-                        <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
-                            icon="fas fa-lg fa-save" />
-                        <a href="{{ route('users.index') }}"><x-adminlte-button label="Back" theme="secondary"
-                                icon="fas fa-arrow-left" /></a>
+                        {{-- Buttons --}}
+                        <div class="mb-3 row justify-content-end">
+                            <a href="{{ route('users.index') }}">
+                                <x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left"
+                                    class="rounded-2" class="mr-2" />
+                            </a>
+                            <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
+                                class="rounded-2" icon="fas fa-lg fa-save" />
+                        </div>
 
                     </form>
                 </div>

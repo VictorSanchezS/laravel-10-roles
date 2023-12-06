@@ -43,11 +43,14 @@
                             </x-slot>
                         </x-adminlte-textarea>
 
-                        <div class="mb-3 row">
-                            <x-adminlte-button label="Save" theme="success" icon="fas fa-save" type="submit" />
-                                <div class="col-md-6">
-                                    <a href="{{ route('categories.index') }}"><x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left" /></a>
-                                </div>
+                        {{-- Buttons --}}
+                        <div class="mb-3 row justify-content-end">
+                            <a href="{{ route('categories.index') }}">
+                                <x-adminlte-button label="Back" theme="secondary" icon="fas fa-arrow-left"
+                                    class="rounded-2" class="mr-2" />
+                            </a>
+                            <x-adminlte-button class="btn-flat" type="submit" label="Submit" theme="success"
+                                class="rounded-2" icon="fas fa-lg fa-save" />
                         </div>
 
                     </form>
