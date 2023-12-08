@@ -31,11 +31,16 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-
         $query = $request->input('query');
 
-        $products = empty($query) ? Product::all() : Product::where('name', 'like', "%$query%")->get();
+        // Si la solicitud es Ajax, devuelve solo la vista parcial
+        if ($request->ajax()) {
+            $products = empty($query) ? Product::all() : Product::where('name', 'like', "%$query%")->get();
+            return view('products.index_partial', compact('products'));
+        }
 
+        // Si no es una solicitud Ajax, devuelve la vista completa
+        $products = empty($query) ? Product::all() : Product::where('name', 'like', "%$query%")->get();
         return view('products.index', compact('products', 'query'));
     }
 
@@ -94,7 +99,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, $product) : RedirectResponse
+    public function update(UpdateProductRequest $request, $product): RedirectResponse
     {
         $product = Product::find($product);
         $product->name = $request->input('name');
