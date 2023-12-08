@@ -6,9 +6,6 @@
     <h2 class="h2 text-center display-5 text-primary fw-light">CATEGORY LIST</h2>
 @stop
 
-
-@extends('adminlte::page')
-
 @section('content')
 <div class="card">
     <div class="card-body">

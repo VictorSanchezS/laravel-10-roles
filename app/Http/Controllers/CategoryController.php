@@ -15,13 +15,13 @@ class CategoryController extends Controller
      */
     public function __construct()
     {
-       $this->middleware('auth');
-       $this->middleware('permission:create-category|edit-category|delete-category', ['only' => ['index','show']]);
-       $this->middleware('permission:create-category', ['only' => ['create','store']]);
-       $this->middleware('permission:edit-category', ['only' => ['edit','update']]);
-       $this->middleware('permission:delete-category', ['only' => ['destroy']]);
+        $this->middleware('auth');
+        $this->middleware('permission:create-category|edit-category|delete-category', ['only' => ['index', 'show']]);
+        $this->middleware('permission:create-category', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit-category', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete-category', ['only' => ['destroy']]);
     }
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -47,7 +47,7 @@ class CategoryController extends Controller
     {
         Category::create($request->all());
         return redirect()->route('categories.index')
-                ->withSuccess('New category is added successfully.');
+            ->withSuccess('New category is added successfully.');
     }
 
     /**
@@ -76,8 +76,11 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category): RedirectResponse
     {
         $category->update($request->all());
-        return redirect()->back()
-                ->withSuccess('Category is updated successfully.');
+        return redirect()->route('categories.index')
+            ->withSuccess('Category is updated successfully.');
+
+        // return redirect()->back()
+        //     ->withSuccess('Category is updated successfully.');
     }
 
     /**
@@ -87,6 +90,6 @@ class CategoryController extends Controller
     {
         $category->delete();
         return redirect()->route('categories.index')
-                ->withSuccess('Category is deleted successfully.');
+            ->withSuccess('Category is deleted successfully.');
     }
 }

@@ -55,9 +55,6 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request): RedirectResponse
     {
-        // Product::create($request->all());
-        // return redirect()->route('products.index')
-        //         ->withSuccess('New product is added successfully.');
         $product = new Product();
         $product->name = $request->input('name');
         $product->description = $request->input('description');
@@ -97,12 +94,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, $product) //: RedirectResponse
+    public function update(UpdateProductRequest $request, $product) : RedirectResponse
     {
-        // $product->update($request->all());
-        // return redirect()->back()
-        //         ->withSuccess('Product is updated successfully.');
-
         $product = Product::find($product);
         $product->name = $request->input('name');
         $product->description = $request->input('description');
@@ -111,9 +104,9 @@ class ProductController extends Controller
         $product->category_id = $request->input('category_id');
         $product->provider_id = $request->input('provider_id');
 
-        $product->save();
+        $product->update();
 
-        return redirect()->back()
+        return redirect()->route('products.index')
             ->withSuccess('Product is updated successfully.');
     }
 

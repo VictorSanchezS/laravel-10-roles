@@ -7,8 +7,6 @@
 @stop
 
 
-@extends('adminlte::page')
-
 @section('content')
 <div class="card">
     <div class="card-body">
@@ -87,8 +85,4 @@
 
     </div>
 </div>
-@stop
-
-@section('js')
-    
 @stop

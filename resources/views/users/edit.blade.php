@@ -21,7 +21,7 @@
 
                             {{-- Name --}}
                             <div class="col">
-                                <x-adminlte-input name="iUser" label="Name" placeholder="name"
+                                <x-adminlte-input name="name" label="Name" placeholder="name" id="name"
                                     label-class="text-lightblue" value="{{ $user->name }}">
                                     <x-slot name="prependSlot">
                                         <div class="input-group-text">
@@ -33,8 +33,8 @@
 
                             {{-- Email --}}
                             <div class="col">
-                                <x-adminlte-input name="iUser" label="Email" placeholder="email"
-                                    label-class="text-lightblue" type="email" value="{{ $user->email }}">
+                                <x-adminlte-input name="email" label="Email" placeholder="email" id="email"
+                                    label-class="text-lightblue" value="{{ $user->email }}" type="email">
                                     <x-slot name="prependSlot">
                                         <div class="input-group-text">
                                             <i class="fas fa-at text-lightblue"></i>
@@ -59,10 +59,10 @@
                                 </x-adminlte-input>
                             </div>
 
-                            {{-- Confirm Password --}}
+                            {{-- With prepend slot --}}
                             <div class="col">
-                                <x-adminlte-input name="password" label="Confirm Password" placeholder="confirm password"
-                                    label-class="text-lightblue" type='password'>
+                                <x-adminlte-input name="password_confirmation" label="Confirm Password"
+                                    placeholder="confirm password" label-class="text-lightblue" type='password'>
                                     <x-slot name="prependSlot">
                                         <div class="input-group-text">
                                             <i class="fas fa-lock text-lightblue"></i>
@@ -74,29 +74,25 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="roles"
-                                class="col-md-4 col-form-label text-md-end text-start text-info">Roles</label>
-                            <div class="col-md-6">
-                                <select class="form-select @error('roles') is-invalid @enderror" multiple aria-label="Roles"
-                                    id="roles" name="roles[]">
+                            <label for="roles" class="col-md-4 col-form-label text-md-end text-start">Roles</label>
+                            <div class="col-md-6">           
+                                <select class="form-select @error('roles') is-invalid @enderror" multiple aria-label="Roles" id="roles" name="roles[]">
                                     @forelse ($roles as $role)
-
-                                        @if ($role != 'Super Admin')
-                                            <option value="{{ $role }}"
-                                                {{ in_array($role, $userRoles ?? []) ? 'selected' : '' }}>
+    
+                                        @if ($role!='Super Admin')
+                                        <option value="{{ $role }}" {{ in_array($role, $userRoles ?? []) ? 'selected' : '' }}>
+                                            {{ $role }}
+                                        </option>
+                                        @else
+                                            @if (Auth::user()->hasRole('Super Admin'))   
+                                            <option value="{{ $role }}" {{ in_array($role, $userRoles ?? []) ? 'selected' : '' }}>
                                                 {{ $role }}
                                             </option>
-                                        @else
-                                            @if (Auth::user()->hasRole('Super Admin'))
-                                                <option value="{{ $role }}"
-                                                    {{ in_array($role, $userRoles ?? []) ? 'selected' : '' }}>
-                                                    {{ $role }}
-                                                </option>
                                             @endif
                                         @endif
-
+    
                                     @empty
-
+    
                                     @endforelse
                                 </select>
                                 @if ($errors->has('roles'))
@@ -105,6 +101,7 @@
                             </div>
                         </div>
 
+                                                    
                         {{-- Buttons --}}
                         <div class="mb-3 row justify-content-end">
                             <a href="{{ route('users.index') }}">

@@ -15,13 +15,13 @@ class ProviderController extends Controller
      */
     public function __construct()
     {
-       $this->middleware('auth');
-       $this->middleware('permission:create-provider|edit-provider|delete-provider', ['only' => ['index','show']]);
-       $this->middleware('permission:create-provider', ['only' => ['create','store']]);
-       $this->middleware('permission:edit-provider', ['only' => ['edit','update']]);
-       $this->middleware('permission:delete-provider', ['only' => ['destroy']]);
+        $this->middleware('auth');
+        $this->middleware('permission:create-provider|edit-provider|delete-provider', ['only' => ['index', 'show']]);
+        $this->middleware('permission:create-provider', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit-provider', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete-provider', ['only' => ['destroy']]);
     }
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -56,7 +56,7 @@ class ProviderController extends Controller
         $provider->save();
 
         return redirect()->route('providers.index')
-                ->withSuccess('New provider is added successfully.');
+            ->withSuccess('New provider is added successfully.');
     }
 
     /**
@@ -94,8 +94,11 @@ class ProviderController extends Controller
 
         $provider->update();
 
-        return redirect()->back()
-                ->withSuccess('Provider is updated successfully.');
+        return redirect()->route('providers.index')
+            ->withSuccess('Provider is updated successfully.');
+
+        // return redirect()->back
+        //     ->withSuccess('Provider is updated successfully.');
     }
 
     /**
@@ -105,6 +108,6 @@ class ProviderController extends Controller
     {
         $provider->delete();
         return redirect()->route('providers.index')
-                ->withSuccess('provider is deleted successfully.');
+            ->withSuccess('provider is deleted successfully.');
     }
 }

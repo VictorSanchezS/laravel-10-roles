@@ -6,8 +6,6 @@
 <h2 class="h2 text-center display-5 text-primary fw-light">PROVIDER LIST</h2>
 @stop
 
-@extends('adminlte::page')
-
 @section('content')
 <div class="card">
     <div class="card-body">
