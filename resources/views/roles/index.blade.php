@@ -28,7 +28,7 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $role->name }}</td>
                             <td>
-                                <form action="{{ route('roles.destroy', $role->id) }}" method="post">
+                                <form action="{{ route('roles.destroy', $role->id) }}" method="post" class="form-delete">
                                     @csrf
                                     @method('DELETE')
 
@@ -45,8 +45,7 @@
 
                                         @can('delete-role')
                                             @if ($role->name != Auth::user()->hasRole($role->name))
-                                                <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('Do you want to delete this role?');">
+                                                <button type="submit" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             @endif
@@ -70,4 +69,37 @@
 
         </div>
     </div>
+@stop
+
+@section('js')
+
+    @if (session('delete') == 'ok')
+        <script>
+            Swal.fire({
+                title: "Deleted!",
+                text: "Role deleted.",
+                icon: "success"
+            });
+        </script>
+    @endif
+
+    <script>
+        $('.form-delete').submit(function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        });
+    </script>
 @stop

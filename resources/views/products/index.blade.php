@@ -55,7 +55,7 @@
                                 <td>{{ $product->category->name ?? 'None' }}</td>
                                 <td>{{ $product->provider->name ?? 'None' }}</td>
                                 <td>
-                                    <form action="{{ route('products.destroy', $product->id) }}" method="post">
+                                    <form action="{{ route('products.destroy', $product->id) }}" method="post" class="form-delete">
                                         @csrf
                                         @method('DELETE')
 
@@ -72,8 +72,7 @@
                                         @endcan
 
                                         @can('delete-product')
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Do you want to delete this product?');">
+                                            <button type="submit" class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash"></i> Delete
                                             </button>
                                         @endcan
@@ -113,5 +112,36 @@
                 });
             }, 500);
         }
+    </script>
+
+    @if (session('delete') == 'ok')
+        <script>
+            Swal.fire({
+                title: "Deleted!",
+                text: "Product deleted.",
+                icon: "success"
+            });
+        </script>
+    @endif
+
+    <script>
+        $('.form-delete').submit(function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    this.submit();
+                }
+            });
+        });
     </script>
 @endsection

@@ -108,6 +108,6 @@ class ProviderController extends Controller
     {
         $provider->delete();
         return redirect()->route('providers.index')
-            ->withSuccess('provider is deleted successfully.');
+            ->with('delete','ok');
     }
 }

@@ -125,6 +125,6 @@ class UserController extends Controller
         $user->syncRoles([]);
         $user->delete();
         return redirect()->route('users.index')
-                ->withSuccess('User is deleted successfully.');
+                ->with('delete','ok');
     }
 }
