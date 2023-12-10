@@ -74,14 +74,14 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateCategoryRequest $request, Category $category): RedirectResponse
-    {
-        $category->update($request->all());
-        return redirect()->route('categories.index')
-            ->withSuccess('Category is updated successfully.');
+{
+    $category->update($request->all());
 
-        // return redirect()->back()
-        //     ->withSuccess('Category is updated successfully.');
-    }
+    // Agregar un mensaje de sesión
+    session()->flash('update', 'ok');
+
+    return redirect()->back();
+}
 
     /**
      * Remove the specified resource from storage.

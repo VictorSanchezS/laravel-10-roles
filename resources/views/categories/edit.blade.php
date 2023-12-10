@@ -8,6 +8,12 @@
 
 @section('content')
 
+@if (session('update') == 'ok')
+                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                    Category updated successfully!
+                </div>
+            @endif
+
     <div class="row justify-content-center">
         <div class="col-md-6">
 
