@@ -60,18 +60,9 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request): RedirectResponse
     {
-        $product = new Product();
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category_id');
-        $product->provider_id = $request->input('provider_id');
+        Product::create($request->validated());
 
-        $product->save();
-
-        return redirect()->route('products.index')
-            ->withSuccess('New product is added successfully.');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -99,17 +90,9 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, $product): RedirectResponse
+    public function update(UpdateProductRequest $request, Product $product): RedirectResponse
     {
-        $product = Product::find($product);
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category_id');
-        $product->provider_id = $request->input('provider_id');
-
-        $product->update();
+        $product->update($request->validated());
 
         session()->flash('update', 'ok');
 
@@ -123,6 +106,6 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.index')
-            ->with('delete','ok');
+            ->with('delete', 'ok');
     }
 }

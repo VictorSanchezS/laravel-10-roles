@@ -85,7 +85,10 @@
                                         </x-slot>
                                         <option value="">Select a provider...</option>
                                         @foreach ($providers as $provider)
-                                            <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                            <option value="{{ $provider->id }}"
+                                                {{ old('provider_id', $product->provider_id) == $provider->id ? 'selected' : '' }}>
+                                                {{ $provider->name }}
+                                            </option>
                                         @endforeach
                                     </x-adminlte-select>
                                     @if ($errors->has('provider_id'))
@@ -123,7 +126,10 @@
                                         </x-slot>
                                         <option value="">Select a category...</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}"
+                                                {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
                                         @endforeach
                                     </x-adminlte-select>
 
@@ -132,6 +138,7 @@
                                     @endif
                                 </div>
                             </div>
+
                         </div>
 
                         {{-- Buttons --}}

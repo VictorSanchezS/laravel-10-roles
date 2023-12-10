@@ -321,6 +321,7 @@ return [
             'route'  => 'roles.index',
             'icon' => 'fas fa-cogs',
             'can'  => 'Super Admin',
+            'active' => ['roles*'],
         ],
 
         [
@@ -332,6 +333,7 @@ return [
             'route'  => 'users.index',
             'icon' => 'fas fa-users',
             'can'  => ['create-user', 'edit-user', 'delete-user'],
+            'active' => ['users*'],
         ],
         [
             'header' => 'PRODUCT MANAGER',
@@ -346,18 +348,21 @@ return [
             'route'  => 'products.index',
             'icon' => 'fas fa-shopping-bag',
             'can'  => ['create-product', 'edit-product', 'delete-product'],
+            'active' => ['products*'],
         ],
         [
             'text' => 'Categories',
             'route'  => 'categories.index',
             'icon'        => 'fas fa-briefcase',
             'can'  => ['create-category', 'edit-category', 'delete-category'],
+            'active' => ['categories*'],
         ],
         [
             'text'        => 'Providers',
             'route'       => 'providers.index',
             'icon'        => 'fas fa-truck',
             'can'  => ['create-provider', 'edit-provider', 'delete-provider'],
+            'active' => ['providers*'],
         ],
 
     ],

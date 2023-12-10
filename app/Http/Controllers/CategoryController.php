@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function index(): View
     {
         return view('categories.index', [
-            'categories' => Category::latest()->paginate(3)
+            'categories' => Category::latest()->paginate(10)
         ]);
     }
 
@@ -46,8 +46,7 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request): RedirectResponse
     {
         Category::create($request->all());
-        return redirect()->route('categories.index')
-            ->withSuccess('New category is added successfully.');
+        return redirect()->route('categories.index');
     }
 
     /**

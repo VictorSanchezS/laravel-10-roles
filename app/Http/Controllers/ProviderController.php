@@ -45,19 +45,11 @@ class ProviderController extends Controller
      */
     public function store(StoreProviderRequest $request): RedirectResponse
     {
-        $provider = new Provider();
-        $provider->name = $request->input('name');
-        $provider->email = $request->input('email');
-        $provider->phone = $request->input('phone');
-        $provider->country = $request->input('country');
-        $provider->city = $request->input('city');
-        $provider->address = $request->input('address');
+        Provider::create($request->validated());
 
-        $provider->save();
-
-        return redirect()->route('providers.index')
-            ->withSuccess('New provider is added successfully.');
+        return redirect()->route('providers.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -84,20 +76,13 @@ class ProviderController extends Controller
      */
     public function update(UpdateProviderRequest $request, Provider $provider): RedirectResponse
     {
-        $provider = Provider::find($provider->id);
-        $provider->name = $request->input('name');
-        $provider->email = $request->input('email');
-        $provider->phone = $request->input('phone');
-        $provider->country = $request->input('country');
-        $provider->city = $request->input('city');
-        $provider->address = $request->input('address');
-
-        $provider->update();
+        $provider->update($request->validated());
 
         session()->flash('update', 'ok');
 
         return redirect()->back();
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -106,6 +91,6 @@ class ProviderController extends Controller
     {
         $provider->delete();
         return redirect()->route('providers.index')
-            ->with('delete','ok');
+            ->with('delete', 'ok');
     }
 }
