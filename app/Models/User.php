@@ -49,16 +49,16 @@ class User extends Authenticatable
     protected function name(): Attribute
     {
         return new Attribute(
-            get: fn($value) => ucwords($value),
-            set: fn($value) => strtolower($value)
+            get: fn ($value) => ucwords($value),
+            set: fn ($value) => strtolower($value)
         );
     }
 
     protected function email(): Attribute
     {
         return new Attribute(
-            get: fn($value) => strtolower($value),
-            set: fn($value) => strtolower($value)
+            get: fn ($value) => strtolower($value),
+            set: fn ($value) => strtolower($value)
         );
     }
 
@@ -69,6 +69,14 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-        return 'That\'s a nice guy';
+        $roles = $this->getRoleNames();
+
+        if (!empty($roles)) {
+            // Devuelve el primer rol del usuario
+            return $roles[0];
+        } else {
+            // En caso de que el usuario no tenga roles asignados
+            return 'No Role Assigned';
+        }
     }
 }
