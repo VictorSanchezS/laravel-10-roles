@@ -3,10 +3,16 @@
 @section('title', 'Edit ' . $role->name)
 
 @section('content_header')
-    <h2 class="text-center text-primary">ADD ROLE</h2>
+    <h2 class="text-center text-primary">EDIT ROLE</h2>
 @stop
 
 @section('content')
+
+    @if (session('update') == 'ok')
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+            Role updated successfully!
+        </div>
+    @endif
 
     <div class="row justify-content-center">
         <div class="col-md-4">
@@ -20,8 +26,8 @@
 
                         {{-- Name --}}
                         <div class="mb-3 row">
-                            <x-adminlte-input name="name" label="Name" placeholder="Enter name" fgroup-class="col-md-12"
-                                value="{{ $role->name }}">
+                            <x-adminlte-input name="name" label="Name" placeholder="Enter name"
+                                fgroup-class="col-md-12" value="{{ $role->name }}">
                                 <x-slot name="prependSlot">
                                     <div class="input-group-text">
                                         <i class="fas fa-user-shield text-lightblue"></i>

@@ -74,14 +74,14 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateCategoryRequest $request, Category $category): RedirectResponse
-{
-    $category->update($request->all());
+    {
+        $category->update($request->all());
 
-    // Agregar un mensaje de sesión
-    session()->flash('update', 'ok');
+        // Agregar un mensaje de sesión
+        session()->flash('update', 'ok');
 
-    return redirect()->back();
-}
+        return redirect()->back();
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -90,6 +90,6 @@ class CategoryController extends Controller
     {
         $category->delete();
         return redirect()->route('categories.index')
-            ->with('delete','ok');
+            ->with('delete', 'ok');
     }
 }

@@ -103,8 +103,9 @@ class RoleController extends Controller
 
         $role->syncPermissions($permissions);    
         
-        return redirect()->route('roles.index')
-                ->withSuccess('Role is updated successfully.');
+        session()->flash('update', 'ok');
+
+        return redirect()->back();
     }
 
     /**

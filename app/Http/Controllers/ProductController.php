@@ -111,8 +111,9 @@ class ProductController extends Controller
 
         $product->update();
 
-        return redirect()->route('products.index')
-            ->withSuccess('Product is updated successfully.');
+        session()->flash('update', 'ok');
+
+        return redirect()->back();
     }
 
     /**

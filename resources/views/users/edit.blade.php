@@ -8,6 +8,13 @@
 
 
 @section('content')
+
+    @if (session('update') == 'ok')
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+            User updated successfully!
+        </div>
+    @endif
+
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -75,24 +82,27 @@
 
                         <div class="mb-3 row">
                             <label for="roles" class="col-md-4 col-form-label text-md-end text-start">Roles</label>
-                            <div class="col-md-6">           
-                                <select class="form-select @error('roles') is-invalid @enderror" multiple aria-label="Roles" id="roles" name="roles[]">
+                            <div class="col-md-6">
+                                <select class="form-select @error('roles') is-invalid @enderror" multiple aria-label="Roles"
+                                    id="roles" name="roles[]">
                                     @forelse ($roles as $role)
-    
-                                        @if ($role!='Super Admin')
-                                        <option value="{{ $role }}" {{ in_array($role, $userRoles ?? []) ? 'selected' : '' }}>
-                                            {{ $role }}
-                                        </option>
-                                        @else
-                                            @if (Auth::user()->hasRole('Super Admin'))   
-                                            <option value="{{ $role }}" {{ in_array($role, $userRoles ?? []) ? 'selected' : '' }}>
+
+                                        @if ($role != 'Super Admin')
+                                            <option value="{{ $role }}"
+                                                {{ in_array($role, $userRoles ?? []) ? 'selected' : '' }}>
                                                 {{ $role }}
                                             </option>
+                                        @else
+                                            @if (Auth::user()->hasRole('Super Admin'))
+                                                <option value="{{ $role }}"
+                                                    {{ in_array($role, $userRoles ?? []) ? 'selected' : '' }}>
+                                                    {{ $role }}
+                                                </option>
                                             @endif
                                         @endif
-    
+
                                     @empty
-    
+
                                     @endforelse
                                 </select>
                                 @if ($errors->has('roles'))
@@ -101,7 +111,7 @@
                             </div>
                         </div>
 
-                                                    
+
                         {{-- Buttons --}}
                         <div class="mb-3 row justify-content-end">
                             <a href="{{ route('users.index') }}">

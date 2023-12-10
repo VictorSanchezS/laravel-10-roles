@@ -94,11 +94,9 @@ class ProviderController extends Controller
 
         $provider->update();
 
-        return redirect()->route('providers.index')
-            ->withSuccess('Provider is updated successfully.');
+        session()->flash('update', 'ok');
 
-        // return redirect()->back
-        //     ->withSuccess('Provider is updated successfully.');
+        return redirect()->back();
     }
 
     /**

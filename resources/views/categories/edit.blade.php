@@ -8,11 +8,11 @@
 
 @section('content')
 
-@if (session('update') == 'ok')
-                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-                    Category updated successfully!
-                </div>
-            @endif
+    @if (session('update') == 'ok')
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+            Category updated successfully!
+        </div>
+    @endif
 
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -37,10 +37,11 @@
                             @endif
                         </x-adminlte-input>
 
-                        
+
                         {{-- With prepend slot, sm size and label --}}
-                        <x-adminlte-textarea name="description" label="Description" rows=5 label-class="text-warning" fgroup-class="col-md-12"
-                            id="description" name="description" igroup-size="sm" placeholder="Insert description...">
+                        <x-adminlte-textarea name="description" label="Description" rows=5 label-class="text-warning"
+                            fgroup-class="col-md-12" id="description" name="description" igroup-size="sm"
+                            placeholder="Insert description...">
                             {{ $category->description }}
                             <x-slot name="prependSlot">
                                 <div class="input-group-text bg-dark">
@@ -65,5 +66,5 @@
         </div>
     </div>
 
-    
+
 @stop
