@@ -39,8 +39,8 @@ class ProductController extends Controller
             return view('products.index_partial', compact('products'));
         }
 
-        // Si no es una solicitud Ajax, devuelve la vista completa
-        $products = empty($query) ? Product::all() : Product::where('name', 'like', "%$query%")->get();
+        // Si no es una solicitud Ajax, devuelve la vista completa con paginación
+        $products = empty($query) ? Product::paginate(10) : Product::where('name', 'like', "%$query%")->paginate(10);
         return view('products.index', compact('products', 'query'));
     }
 

@@ -26,7 +26,7 @@ class Category extends Model
     protected function description(): Attribute
     {
         return new Attribute(
-            get: fn($value) => ucwords($value),
+            get: fn($value) => ucfirst(strtolower($value)),
             set: fn($value) => strtolower($value)
         );
     }

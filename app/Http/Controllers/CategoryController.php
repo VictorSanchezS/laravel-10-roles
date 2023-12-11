@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function index(): View
     {
         return view('categories.index', [
-            'categories' => Category::latest()->paginate(10)
+            'categories' => Category::latest()->paginate(5)
         ]);
     }
 
