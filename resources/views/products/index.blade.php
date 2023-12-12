@@ -87,10 +87,11 @@
                             </td>
                         @endforelse
                     </tbody>
+                    
                 </table>
+                {{ $products->links() }}
             </div>
-            {{ $products->links() }}
-
+            
         </div>
     </div>
 @stop
