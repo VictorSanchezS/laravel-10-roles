@@ -37,7 +37,8 @@
                             @endcan
 
                             @can('delete-product')
-                                <button type="submit" class="btn btn-danger btn-sm">
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Do you want to delete this product?');">
                                     <i class="fas fa-trash"></i> Delete
                                 </button>
                             @endcan
