@@ -7,6 +7,10 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProviderController;
+use App\Models\Provider;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +45,17 @@ Route::resources([
 ]);
 
 Route::get('/products/search', 'ProductController@search')->name('products.search');
+
+//Route::get('/providers/download-pdf', [ProviderController::class, 'downloadPdf'])->name('providers.download-pdf');
+
+Route::get('/download-pdf/providers', function () {
+
+    $providers = Provider::all();
+
+    // Convierte la colección a un array
+    $providersArray = $providers->toArray();
+
+    $pdf = PDF::loadView('providers.pdf', ['providers' => $providersArray]);
+    
+    return $pdf->download();
+})->name('download-pdf.providers');

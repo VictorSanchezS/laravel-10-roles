@@ -72,10 +72,8 @@ class User extends Authenticatable
         $roles = $this->getRoleNames();
 
         if (!empty($roles)) {
-            // Devuelve el primer rol del usuario
             return $roles[0];
         } else {
-            // En caso de que el usuario no tenga roles asignados
             return 'No Role Assigned';
         }
     }

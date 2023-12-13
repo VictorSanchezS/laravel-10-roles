@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateProviderRequest;
 use App\Models\Provider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-
+use Illuminate\Support\Facades\App;
 class ProviderController extends Controller
 {
     /**
@@ -93,4 +93,5 @@ class ProviderController extends Controller
         return redirect()->route('providers.index')
             ->with('delete', 'ok');
     }
+
 }
