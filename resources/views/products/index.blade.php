@@ -14,6 +14,9 @@
                 <a href="{{ route('products.create') }}" class="btn btn-success btn-sm my-2">
                     <i class="fas fa-plus-circle"></i> Add New Product
                 </a>
+
+                <a href="{{ route('download-pdf.products') }}" class="btn btn-info btn-sm my-2"><i
+                    class="fas fa-print"></i> Download PDF</a>
             @endcan
 
             <div class="mb-3">
@@ -27,9 +30,6 @@
             </div>
 
             <div id="searchResults">
-                {{-- @include('products.index_partial', ['products' => $products]) --}}
-
-
 
                 <table class="table table-striped table-bordered">
                     <thead>
