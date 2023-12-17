@@ -14,11 +14,7 @@
 - nodejs
 ### Then run next commands:
 - composer install
-- composer require spatie/laravel-permission
 - cp .env.example .env
 - php artisan key:generate
 - php artisan migrate --seed
-- composer require laravel/ui
-- npm install
-- npm run build
 - php artisan serve
